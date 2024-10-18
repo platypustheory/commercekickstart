@@ -15,3 +15,20 @@ Our addition to `composer.json`'s `post-install-cmd` and `post-update-cmd` stanz
 ```
 rm -rf vendor/symfony/console/Style
 ```
+
+4. Additionally, remove `vendor/symfony/console/Output`, to address the error message:
+
+> Drush command terminated abnormally due to an unrecoverable error. Error: Declaration of Symfony\Component\Console\Style\OutputStyle::getVerbosity() must be compatible with Symfony\Component\Console\Output\OutputInterface::getVerbosity(): int in /var/aegir/.drush/provision/vendor/symfony/console/Style/OutputStyle.php, line 78
+
+Our addition to `composer.json`'s `post-install-cmd` and `post-update-cmd` stanzas:
+
+```
+rm -rf vendor/symfony/console/Output
+```
+
+5. Now, we are seeing the following error:
+
+```
+Drush command terminated abnormally due to an unrecoverable error. Error: Declaration of Drush\Sql\Sqlmysql::command() must be compatible with Drush\Sql\SqlBase::command(): string in /usr/local/share/drush/lib/Drush/Sql/Sqlmysql.php, line 9
+```
+
