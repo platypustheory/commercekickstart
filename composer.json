@@ -70,12 +70,13 @@
         "drupal/core-project-message": "^10",
         "drupal/core-recommended": "^10",
         "drupal/default_content": "^2",
-        "drush/drush": "^12",
         "vlucas/phpdotenv": "^5.1",
         "webflo/drupal-finder": "^1.2",
-        "webmozart/path-util": "^2.3"
+        "webmozart/path-util": "^2.3",
+        "psr/log": "1.1.4 as 3.0.0"
     },
     "require-dev": {
+        "drush/drush": "^12",
         "drupal/core-dev": "^10",
         "zaporylie/composer-drupal-optimizations": "^1.2"
     },
@@ -99,10 +100,12 @@
             "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
         ],
         "post-install-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
+        "rm -rf vendor/symfony/console/Input # see https://www.computerminds.co.uk/articles/aegir-3-and-drupal-10-just-about-working"
         ],
         "post-update-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
+        "rm -rf vendor/symfony/console/Input # see https://www.computerminds.co.uk/articles/aegir-3-and-drupal-10-just-about-working"
         ]
     },
     "extra": {
@@ -110,6 +113,9 @@
         "patches": {
             "drupal/default_content": {
                 "#3160146 Add a Normalizer and Denormalizer to support Layout Builder": "patches/default_content/3160146-layout-builder.patch"
+            },
+        "drupal/core": {
+                "Omega8 D10 Aegir3 patch": "https://raw.githubusercontent.com/omega8cc/boa/5.x-dev/aegir/patches/drupal-ten-aegir-01.patch"
             }
         },
         "patchLevel": {
