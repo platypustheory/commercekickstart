@@ -101,11 +101,13 @@
         ],
         "post-install-cmd": [
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
-        "rm -rf vendor/symfony/console/Input # see https://www.computerminds.co.uk/articles/aegir-3-and-drupal-10-just-about-working"
+        "rm -rf vendor/symfony/console/Input # see https://www.computerminds.co.uk/articles/aegir-3-and-drupal-10-just-about-working",
+        "rm -rf vendor/symfony/console/Style # update for 10.3.6 to the previous fix"
         ],
         "post-update-cmd": [
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
-        "rm -rf vendor/symfony/console/Input # see https://www.computerminds.co.uk/articles/aegir-3-and-drupal-10-just-about-working"
+        "rm -rf vendor/symfony/console/Input # see https://www.computerminds.co.uk/articles/aegir-3-and-drupal-10-just-about-working",
+        "rm -rf vendor/symfony/console/Style # update for 10.3.6 to the previous fix"
         ]
     },
     "extra": {
@@ -114,8 +116,8 @@
             "drupal/default_content": {
                 "#3160146 Add a Normalizer and Denormalizer to support Layout Builder": "patches/default_content/3160146-layout-builder.patch"
             },
-        "drupal/core": {
-                "Omega8 D10 Aegir3 patch": "https://raw.githubusercontent.com/omega8cc/boa/5.x-dev/aegir/patches/drupal-ten-aegir-01.patch"
+            "drupal/core": {
+                "Omega8 D10 Aegir3 patch": "patches/core/drupal-ten-aegir-01.patch"
             }
         },
         "patchLevel": {
