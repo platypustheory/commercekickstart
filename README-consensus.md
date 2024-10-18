@@ -26,9 +26,20 @@ Our addition to `composer.json`'s `post-install-cmd` and `post-update-cmd` stanz
 rm -rf vendor/symfony/console/Output
 ```
 
-5. Now, we are seeing the following error:
+5. Because we didn't run `composer install --no-dev`, drush 12 was installed, which causes:
 
 ```
 Drush command terminated abnormally due to an unrecoverable error. Error: Declaration of Drush\Sql\Sqlmysql::command() must be compatible with Drush\Sql\SqlBase::command(): string in /usr/local/share/drush/lib/Drush/Sql/Sqlmysql.php, line 9
 ```
 
+So, make sure to run `composer install --no-dev`.
+This works to install a site with the standard and/or minimal profiles.
+
+Alternatively, we can try removing drush altogether from the `composer.json`, to make it less error-prone. 
+
+6. However, when trying to install a site with the drupalcommerce-kickstart profile, we get another drush failure:
+
+```
+Drush command terminated abnormally due to an unrecoverable error.	
+Checking DB credentials yielded error: Unable to find a matching SQL Class. Drush cannot find your database connection details.
+```
