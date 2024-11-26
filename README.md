@@ -1,3 +1,17 @@
+## Platypus Media Custom Commerce Kickstart Platform for Aegir 3
+
+Forked from Consensus Enterprises's Implementation.
+
+To create Aegir platform, select "Deploy a Composer project from a GIT repo"
+from the Aegir platform creation screen.
+
+Use this repo's URL:
+```
+git@github.com:platypustheory/commercekickstart
+```
+Make docroot: web
+Make branch: main
+
 # Centarro Commerce Kickstart 3.x project template
 
 Use [Composer](https://getcomposer.org/) to get Drupal + Centarro Commerce Kickstart 3.x.
