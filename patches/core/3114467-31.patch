@@ -1,0 +1,65 @@
+diff --git a/core/lib/Drupal/Core/Condition/ConditionPluginBase.php b/core/lib/Drupal/Core/Condition/ConditionPluginBase.php
+index 48d6cc64fa..6ab0b9ee2a 100644
+--- a/core/lib/Drupal/Core/Condition/ConditionPluginBase.php
++++ b/core/lib/Drupal/Core/Condition/ConditionPluginBase.php
+@@ -65,6 +65,10 @@ public function buildConfigurationForm(array $form, FormStateInterface $form_sta
+    * {@inheritdoc}
+    */
+   public function validateConfigurationForm(array &$form, FormStateInterface $form_state) {
++    // In the config schema, 'negate' is a boolean. However, some form elements
++    // such as checkbox return the value as 0/1. Cast here to ensure the data is
++    // in the expected type.
++    $form_state->setValue('negate', (bool) $form_state->getValue('negate'));
+   }
+ 
+   /**
+diff --git a/core/tests/Drupal/Tests/Core/Condition/ConditionPluginBaseTest.php b/core/tests/Drupal/Tests/Core/Condition/ConditionPluginBaseTest.php
+new file mode 100644
+index 0000000000..f8298c77bb
+--- /dev/null
++++ b/core/tests/Drupal/Tests/Core/Condition/ConditionPluginBaseTest.php
+@@ -0,0 +1,43 @@
++<?php
++
++namespace Drupal\Tests\Core\Condition;
++
++use Drupal\Core\Form\FormState;
++use Drupal\Tests\UnitTestCase;
++
++/**
++ * @coversDefaultClass \Drupal\Core\Condition\ConditionPluginBase
++ * @group Condition
++ */
++class ConditionPluginBaseTest extends UnitTestCase {
++
++  /**
++   * @covers ::validateConfigurationForm
++   */
++  public function testValidateConfigurationForm() {
++    $form_validator = $this->getMockBuilder('Drupal\Core\Condition\ConditionPluginBase')
++      ->setConstructorArgs([[], '', ''])
++      ->onlyMethods(['evaluate', 'summary'])
++      ->getMock();
++
++    $form = [];
++    $form_state = new FormState();
++
++    $form_state->setValue('negate', 0);
++    $form_validator->validateConfigurationForm($form, $form_state);
++    $this->assertIsBool($form_state->getValue('negate'));
++
++    $form_state->setValue('negate', 1);
++    $form_validator->validateConfigurationForm($form, $form_state);
++    $this->assertIsBool($form_state->getValue('negate'));
++
++    $form_state->setValue('negate', FALSE);
++    $form_validator->validateConfigurationForm($form, $form_state);
++    $this->assertIsBool($form_state->getValue('negate'));
++
++    $form_state->setValue('negate', TRUE);
++    $form_validator->validateConfigurationForm($form, $form_state);
++    $this->assertIsBool($form_state->getValue('negate'));
++  }
++
++}
+\ No newline at end of file
