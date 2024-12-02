@@ -1,0 +1,38 @@
+order_flow_custom:
+  id: order_flow_custom
+  group: commerce_order
+  label: "Order Flow with Validation and Backorder"
+  states:
+    draft:
+      label: Draft
+    validate:
+      label: In Process
+    shipped:
+      label: Shipped
+    completed:
+      label: Completed
+    backorder:
+      label: Backordered    
+    cancel:
+      label: Canceled
+  transitions:
+    place:
+      label: "Place Order"
+      from: [draft]
+      to: validate
+    validate:
+      label: "Process Order"
+      from: [validate, backorder]
+      to: shipped
+    shipped:
+      label: "Shipped Order"
+      from: [shipped]
+      to: completed
+    cancel:
+      label: "Cancel Order"
+      from: [draft, validate, backorder]
+      to: cancel
+    backorder:
+      label: "Backordered"
+      from: [draft, validate]
+      to: backorder

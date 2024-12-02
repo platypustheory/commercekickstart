@@ -1,0 +1,5 @@
+name: order type workflow
+description: Workflow for Order Type With Backorder
+type: module
+core_version_requirement: ^10
+core: 10.x

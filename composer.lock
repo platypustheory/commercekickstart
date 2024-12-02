@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bc9fa31918b39216d6cab049a9a6305b",
+    "content-hash": "cc6e993a271a862d906202cebcec7324",
     "packages": [
         {
             "name": "apimatic/core",
@@ -2619,28 +2619,6 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/commerce"
             }
-        },
-        {
-            "name": "drupal/commerce_demo",
-            "version": "3.0.x-dev",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/commerce_demo.git",
-                "reference": "50bb2e0f15294d34cdd94ae83cfa002f8ad6c48a"
-            },
-            "require": {
-                "centarro/commerce_kickstart": "^3.0",
-                "drupal/default_content": "^2.0@alpha",
-                "drupal/search_api": "^1.20"
-            },
-            "default-branch": true,
-            "type": "drupal-module",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "description": "Demo module for the Commerce module.",
-            "homepage": "http://drupal.org/project/commerce_demo",
-            "time": "2024-09-05T12:25:06+00:00"
         },
         {
             "name": "drupal/commerce_email",
@@ -19867,6 +19845,6 @@
         "php": ">=8.1",
         "ext-curl": "*"
     },
-    "platform-dev": [],
+    "platform-dev": {},
     "plugin-api-version": "2.6.0"
 }
