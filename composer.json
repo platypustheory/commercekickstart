@@ -74,9 +74,9 @@
         "drupal/commerce_fedex": "^1.0@RC",
         "drupal/commerce_reports": "^1.0@RC",
         "drupal/commerce_usps": "^1.7",
-        "drupal/core-composer-scaffold": "10.4.8",
-        "drupal/core-project-message": "10.4.8",
-        "drupal/core-recommended": "10.4.8",
+        "drupal/core-composer-scaffold": "^11.2",
+        "drupal/core-project-message": "^11.2",
+        "drupal/core-recommended": "^10.5",
         "drupal/css_editor": "^2.0",
         "drupal/default_content": "^2",
         "drupal/fontyourface": "^4.0",
@@ -145,7 +145,7 @@
                 "#3160146 Add a Normalizer and Denormalizer to support Layout Builder": "patches/default_content/3160146-layout-builder.patch"
             },
             "drupal/core": {
-                "Omega8 D10 Aegir3 patch": "patches/core/drupal-ten-aegir-01.patch"
+                "Omega8 D10 Aegir3 patch": "patches/core/drupal-ten-aegir-core-01.patch"
             }
         },
         "patchLevel": {
