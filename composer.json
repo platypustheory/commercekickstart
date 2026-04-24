@@ -86,6 +86,7 @@
         "drupal/layout_builder_tabs": "^1.0",
         "drupal/lb_tabs": "^3.0",
         "drupal/mailchimp": "^3.0",
+        "drupal/meaofd": "^1.1",
         "drupal/multiple_registration": "^3.3",
         "drupal/oauth2_client": "^4.1",
         "drupal/oauth_login_oauth2": "^3.0",
